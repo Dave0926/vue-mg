@@ -1,7 +1,6 @@
 import axios from 'axios'
-import config from '../config/index.js'
+import config from '../config/index'
 const baseUrl = process.env.NODE_ENV === 'development' ? config.baseUrl.dev : config.baseUrl.pro
-
 class HttpRequest {
   constructor (baseUrl) {
     this.baseUrl = baseUrl
@@ -49,4 +48,4 @@ class HttpRequest {
   }
 }
 
-export default HttpRequest(baseUrl)
+export default new HttpRequest(baseUrl)
