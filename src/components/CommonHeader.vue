@@ -7,7 +7,10 @@
         size="mini"
         @click="handleMenu"
       ></el-button>
-      <h3 style="color: #fff">首页</h3>
+      <!-- 面包屑导航 -->
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item v-for="item in tags" :key="item.path" :to="{ path: item.path }">{{ item.label}}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-content">
       <el-dropdown trigger="click" szie="mini">
@@ -24,6 +27,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'CommonHeader',
   data () {
@@ -33,6 +37,11 @@ export default {
     handleMenu () {
       this.$store.commit('collapseMenu')
     }
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tab.tabsList
+    })
   }
 }
 </script>
@@ -44,6 +53,7 @@ header {
   justify-content: space-between;
   align-items: center;
   .l-content {
+    color: #fff;
     display: flex;
     align-items: center;
     .el-button {

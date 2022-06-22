@@ -1,12 +1,13 @@
 <template>
   <el-container style="height: 100%">
-    <el-header>
-      <common-header></common-header>
-    </el-header>
-    <el-container>
       <el-aside width="auto">
         <common-aside></common-aside>
       </el-aside>
+    <el-container>
+      <el-header>
+        <common-header></common-header>
+      </el-header>
+      <common-tag></common-tag>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -17,12 +18,14 @@
 <script>
 import CommonAside from '@/components/CommonAside.vue'
 import CommonHeader from '@/components/CommonHeader.vue'
+import CommonTag from '@/components/CommonTag.vue'
 
 export default {
   name: 'MainView',
   components: {
     CommonAside,
-    CommonHeader
+    CommonHeader,
+    CommonTag
   },
   data () {
     return {}
@@ -32,6 +35,7 @@ export default {
 <style lang="less" scoped>
 .el-header {
   background-color: #333;
+  margin-left: 0;
 }
 
 .el-main {

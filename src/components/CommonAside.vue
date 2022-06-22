@@ -27,7 +27,7 @@
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
       >
-        <el-menu-item :index="subIndex">{{ subItem.label }}</el-menu-item>
+        <el-menu-item @click="clickMenu(subItem)" :index="subIndex">{{ subItem.label }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -46,8 +46,8 @@ export default {
           url: 'Home/Home'
         },
         {
-          path: '/mall',
-          name: 'mall',
+          path: '/mail',
+          name: 'mail',
           label: '商品管理',
           icon: 'video-play',
           url: 'MallManage/MallManage'
@@ -93,6 +93,7 @@ export default {
       this.$router.push({
         name: item.name
       })
+      this.$store.commit('selectMenu', item)
     }
   },
   computed: {
